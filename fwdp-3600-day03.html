@@ -1,0 +1,957 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>FWDP 3600 - Day 3</title>
+		<meta name="description" content="BCIT - FWDP 3600 - Day 3 Slides">
+		<meta name="author" content="Jonathon Leathers">
+
+		<link rel="shortcut icon" href="images/favicon.png">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/simple.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h1>FWDP 3600</h1>
+					<h2>Day 3</h2>
+					<table class="title-slide-table">
+						<tr>
+							<td>Course:</td>
+							<td>Content Management Systems</td>
+						</tr>
+						<tr>
+							<td>Instructor:</td>
+							<td>Jonathon Leathers</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h2>How to Use These Slides</h2>
+					<p>Documentation is at <a href="https://revealjs.com/" target="_blank" rel="noopener">reveal.js</a>.</p>
+					<p>Type a question mark (<strong>?</strong>) to see all keyboard shortcuts.</p>
+					<p>To save these as a PDF add <strong>?print-pdf</strong> to the end of the URL and then <a href="https://revealjs.com/pdf-export/" target="_blank" rel="noopener">follow the print steps here</a>.</p>
+				</section>
+
+				<section>
+					<h2 class="uppercase">Objectives:<br> Day 3, Section 1</h2>
+					<ul>
+						<li>Explain the differences between the types of WordPress themes.</li>
+						<li>Explain the basic folders and files in a WordPress block theme.</li>
+						<li>Use theme.json and the Site Editor to modify global theme settings and styles.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>WordPress <br>Theme Types</h2>
+				</section>
+
+				<section>
+					<h2>Block vs Classic</h2>
+					<p>There are two main types of themes in WordPress: <strong>block</strong> and <strong>classic</strong>.</p>
+					<p><a href="https://developer.wordpress.org/themes/getting-started/what-is-a-theme/#theme-types" target="_blank" rel="noopener">Theme Handbook: Theme Types</a></p>
+				</section>
+
+				<section>
+					<h2>Block Themes</h2>
+					<p>A block theme uses an HTML-based templating system. The entire site is built using the block editor and custom blocks can be created using React.</p>
+					<p><a href="https://wordpress.org/themes/twentytwentyfour/" target="_blank" rel="noopener">Twenty Twenty-Four</a> is an example of a block theme.</p>
+				</section>
+
+				<section>
+					<h2>Classic Themes</h2>
+					<p>A classic theme uses a PHP-based templating system. The site can use the block editor, the classic editor, or neither.</p>
+					<p><a href="https://wordpress.org/themes/twentytwenty/" target="_blank" rel="noopener">Twenty Twenty</a> is an example of a classic theme.</p>
+				</section>
+
+				<section>
+					<h2>Hybrid Themes</h2>
+					<p>A classic theme that opts in to some features of the block editor is unofficially called a <strong>hybrid</strong> theme.</p>
+					<p><a href="https://wordpress.org/themes/twentytwentyone/" target="_blank" rel="noopener">Twenty Twenty One</a> is an example of a hybrid theme.</p>
+				</section>
+
+				<section>
+					<h2>Which theme type will we build for the Mindset site?</h2>
+				</section>
+				
+				<section>
+					<table>
+						<tr>
+							<th>Block Themes</th>
+							<th>Classic/Hybrid Themes</th>
+						</tr>
+						<tr>
+							<td>More client control</td>
+							<td>More developer control</td>
+						</tr>
+						<tr>
+							<td>Faster to build</td>
+							<td>Slower to build</td>
+						</tr>
+						<tr>
+							<td>Older WP devs haven't learned it</td>
+							<td>Most WP sites still use them</td>
+						</tr>
+						<tr>
+							<td>New features being added regularly</td>
+							<td>Increasingly becoming legacy code</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h2>Building a WordPress Site</h2>
+				</section>
+
+                <section>
+					<h2>Choosing a Theme</h2>
+					<p>You can build a WordPress website multiple ways, regardless of the theme type (block or classic).</p>
+					<p>First decide what theme you are going to use or build:</p>
+					<ul>
+						<li>Pre-built theme</li>
+						<li>Child theme</li>
+						<li>Custom theme</li>
+					</ul>
+				</section>
+
+                <section>
+					<h2>Pre-built Themes</h2>
+				</section>
+				
+				<section>
+					<h2>Free Themes</h2>
+          			<ul>
+						<li>Choose themes on the <a href="http://wordpress.org/themes/" target="_blank" rel="noopener">WordPress theme repository</a>.</li>
+						<li>Check reviews and number of installations.</li>
+						<li>Check when it was last updated and if it has support.</li>
+        			</ul>
+				</section>
+
+				<section>
+					<h2>Paid Themes</h2>
+					<ul>
+						<li>Paid (Premium) themes are inexpensive and useful if only a few tweaks are needed (Ex: color, font size.)</li>
+						<li>Purchase themes from reputable sellers (Ex: <a href="https://themeforest.net/" target="_blank" rel="noopener">ThemeForest</a>, <a href="https://www.studiopress.com/" target="_blank" rel="noopener">StudioPress</a>, <a href="https://www.cssigniter.com/" target="_blank" rel="noopener">CSSIgnitor</a>).</li>
+						<li>Check reviews and number of installations.</li>
+						<li>Check when it was last updated and if it has support.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Page Builders</h2>
+					<p>Many paid themes use plugins that replace the block editor with a custom page builder.</p>
+					<p>Examples: Elementor, Divi, WP Bakery, Breakdance.</p>
+					<p><strong>If you build a WordPress site with a page builder, you can never uninstall it!</strong></p>
+				</section>
+
+                <section>
+					<h2>Parent &amp; Child Themes</h2>
+				</section>
+
+				<section>
+					<h2>Child Themes</h2>
+					<blockquote>A WordPress child theme is a theme that inherits the functionality of another theme,
+                    called the parent theme, and allows you to modify, or add to the functionality of that parent theme.<br>
+                     --WordPress Codex</blockquote>
+				</section>
+
+				<section>
+					<h2>Child Themes</h2>
+                    <ul>
+	                    <li>Use it when you want to use an existing theme but change some styles, functions, templates.</li>
+	                    <li>Your customization is preserved but you can still get updates to the parent theme.</li>
+                    </ul>
+				</section>
+
+                <section>
+					<h2>Custom-built Themes</h2>
+				</section>
+
+				<section>
+					<h2>Custom-built Themes</h2>
+                    <ul>
+						<li>Perfect choice when you need full control.</li>
+	                    <li>You use a starter theme always, never start from scratch.</li>
+	                    <li>The starter theme has the base files. You add your custom code according to each project.</li>
+                    </ul>
+				</section>
+
+				<section>
+					<h2>Starter Themes</h2>
+					<p>Where you work and what you work on will impact which starter theme you use. There are many out there.</p>
+					<ul>
+						<li><a href="http://underscores.me/" target="_blank" rel="noopener">_s</a> by Automattic</li>
+						<li><a href="https://underscoretw.com/" target="_blank" rel="noopener">_tw</a> by Greg Sullivan</li>
+						<li><a href="https://wordpress.org/plugins/create-block-theme/" target="_blank" rel="noopener">Create Block Theme</a> by WordPress.org</li>
+						<li><a href="https://wordpress.org/themes/blockbase/" target="_blank" rel="noopener">Blockbase</a> by Automattic</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Themes Recap</h2>
+					<ul>
+						<li>Block themes are used to build WordPress sites entirely within the block and site editor.</li>
+						<li>Classic themes are PHP-based and allow developers to decide how content is stored and displayed on a WordPress site.</li>
+						<li>Block, classic, and hybrid themes can all be either pre-built, parent/child, or custom-built.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Custom Development Setup</h2>
+				</section>
+
+				<section>
+					<h2>Mindset Inc</h2>
+					<p>For the next six classes we will create a custom WordPress theme step-by-step.</p>
+					<p>We will use the <a href="https://wordpress.org/plugins/create-block-theme/" target="_blank" rel="noopener">Create Block Theme plugin</a> to take a blank/starter theme and build a custom theme.</p>
+				</section>
+
+				<section>
+					<h2>Setting Up Mindset</h2>
+					<p>You should have followed the steps at the end of the Day 2 slides to setup the site.</p>
+					<p>Use <a href="https://gist.github.com/jtleathers/3c9cf8ad0fb355c2b45af421f71d3b47" target="_blank">this .gitignore file</a> in your <strong>mindset-theme</strong> folder if you don't already have one.</p>
+				</section>
+
+				<section>
+					<h2>Mindset Inc Demo</h2>
+					<p>The <a href="https://wp.bcitwebdeveloper.ca/mindset-demo/" target="_blank" rel="noopener">Mindset Inc Demo Site</a> will show you what we are going to create.</p>
+				</section>
+
+				<section>
+                    <h2>Content Plans</h2>
+                    <p>A content-first approach should do the following:</p>
+                    <ol>
+                        <li>Get content from the client (ideally all of it).</li>
+                        <li>Organize the content.</li>
+                        <li>See how the content aligns with CMS content storage.<br><em>Ex: "should this be a Page or a Post?"</em></li>
+                        <li>Design, then build the site with the content.</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2>Content Plan for Mindset Site</h2>
+					<ul>
+						<li><strong>Pages</strong> -- Home, About, Contact</li>
+                        <li><strong>Posts</strong> -- Blog</li>
+						<li><strong>Custom Post Types</strong> -- Work, Services, Testimonials</li>
+						<li><strong>Custom Taxonomies</strong> -- Work and Service Categories</li>
+						<li><strong>Custom Blocks</strong> -- Testimonial Slider and Copyright</li>
+						<li><strong>Custom Fields</strong> -- Company Email and Address</li>
+					</ul>
+                </section>
+
+				<section>
+					<h2>WordPress Documentation</h2>
+					<p>This is the official documentation for WordPress developers:
+					<br><a href="https://developer.wordpress.org/" target="_blank" rel="noopener">developer.wordpress.org</a>
+					</p>
+					<p>This is the old version, most things have moved over but it still has some resources on it:
+					<br><a href="https://codex.wordpress.org/" target="_blank" rel="noopener">codex.wordpress.org</a>
+					</p>
+				</section>
+
+                <section>
+					<h2>Block Theme Structure</h2>
+				</section>
+
+				<section>
+					<h2>Starter Theme Structure</h2>
+					<p>WordPress themes follow a standard structure of folders and files.</p>
+					<p>Let's open our starter theme in a code editor.</p>
+				</section>
+
+				<section>
+					<h2>Current Starter Theme</h2>
+					<ul>
+						<li><strong>parts</strong> folder
+							<ul>
+								<li>footer.html</li>
+								<li>header.html</li>
+							</ul>
+						</li>
+						<li><strong>templates</strong> folder
+							<ul>
+								<li>index.html</li>
+							</ul>
+						</li>
+						<li>screenshot.png</li>
+						<li>style.css</li>
+						<li>theme.json</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Additional Files & Folders</h2>
+					<ul>
+						<li><strong>functions.php</strong> -- Add WP features, write custom PHP</li>
+						<li><strong>inc</strong> folder -- PHP files called into functions.php</li>
+						<li><strong>assets</strong> folder -- css, js, images, fonts</li>
+						<li><strong>patterns</strong> folder -- block editor patterns</li>
+						<li><strong>styles</strong> folder -- theme style variations</li>
+				</section>
+
+				<section>
+					<h2>Block Theme Structure</h2>
+					<p>We will come back to our theme files regularly to dive deeper into all the features and code.</p>
+					<p>This provides an overview:</p>
+					<p><a href="https://developer.wordpress.org/themes/core-concepts/theme-structure/" target="_blank">Theme Structure - Theme Handbook</a></p>
+				</section>
+
+				<section>
+					<h2>theme.json</h2>
+				</section>
+
+				<section>
+					<h2>theme.json</h2>
+					<blockquote>"theme.json is a configuration file that lets you define the global settings, styles, and more for your theme. The file works with both block and classic themes."</blockquote>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/introduction-to-theme-json/" target="_blank">Introduction to theme.json - Theme Handbook</a></p>
+				</section>
+
+				<section>
+					<h2>theme.json Properties</h2>
+					<ul>
+						<li>version</li>
+						<li>schema</li>
+						<li>settings</li>
+						<li>styles</li>
+						<li>customTemplates</li>
+						<li>templateParts</li>
+						<li>patterns</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>theme.json - version</h2>
+					<p>You should use the latest version available of the API which is currently version 3.</p>
+					<p><a href="https://developer.wordpress.org/block-editor/reference-guides/theme-json-reference/theme-json-living/" target="_blank">theme.json Version 3 Reference</a></p>
+				</section>
+
+				<section>
+					<h2>theme.json - schema</h2>
+					<p>The schema is a reference document to provide error checking, tooltips, and autocomplete in your code editor.</p>
+					<p>The latest version can always be found at <br><a href="https://schemas.wp.org/trunk/theme.json" target="_blank">https://schemas.wp.org/trunk/theme.json</a><br>but it assumes you are using the <a href="https://wordpress.org/plugins/gutenberg/" target="_blank">development plugin</a> with beta features.</p>
+				</section>
+
+				<section>
+					<h2>theme.json - settings</h2>
+					<p>The settings section allows you to enable, disable, and configure features of the Site Editor.</p>
+					<p>For example, you can enable or disable the ability to set margin or padding values on blocks within the Editor. This can be done for all blocks or for specific blocks.</p>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/settings/" target="_blank">theme.json Settings - Theme Handbook</a></p>
+				</section>
+
+				<section>
+					<h2>theme.json - styles</h2>
+					<p>The styles section allows you to specify styles (CSS) at a global level, a block level, or an HTML element level.</p>
+					<p>For example, you can set a default font color, a different color for &lt;a&gt; elements, and another color for the Pullquote block.</p>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/styles/" target="_blank">theme.json Styles - Theme Handbook</a></p>
+				</section>
+
+				<section>
+					<h2>theme.json - customTemplates</h2>
+					<p>If you create custom template files in your theme that you want users to be able to use on any Post or Page, you can use this section to register them.</p>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/custom-templates/" target="_blank">theme.json Custom Templates - Theme Handbook</a></p>
+				</section>
+				
+				<section>
+					<h2>theme.json - templateParts</h2>
+					<p>If you create template part files in your theme like footer.html or header.html, you can use this section to register them.</p>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/template-parts/" target="_blank">theme.json Template Parts - Theme Handbook</a></p>
+				</section>
+
+				<section>
+					<h2>theme.json - patterns</h2>
+					<p>The patterns section is for specifying patterns from the <a href="https://wordpress.org/patterns/" target="_blank">Pattern Directory</a> to include in your theme.</p>
+					<p>This is <strong>not</strong> used for patterns you create and put in your patterns folder because those load automatically.</p>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/patterns/" target="_blank">theme.json Patterns - Theme Handbook</a></p>
+				</section>
+
+				<section>
+					<h2>Site Editor Styles</h2>
+				</section>
+
+				<section>
+					<h2>Site Editor + theme.json</h2>
+					<p>Let's see how theme.json and the Site Editor work together.</p>
+					<p>Go to Appearance -> Editor -> Styles</p>
+				</section>
+
+				<section>
+					<h2>Style Book</h2>
+					<p>Open the Style Book to see a preview of how different blocks will look with the current styles.</p>
+					<img src="images/style-book.png" alt="Style book icon" width="260" height="110">
+				</section>
+
+				<section>
+					<h2>Typography</h2>
+					<p>From Typography you can upload fonts or install Google Fonts.</p>
+					<p>You can also set default global styles for the Typography of the site.</p>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/settings/typography/" target="_blank">Site Editor - Typography</a></p>
+				</section>
+
+				<section>
+					<h2>Font Size Presets</h2>
+					<p>Copy this code into theme.json settings -> typography to override the WordPress default font size presets.</p>
+					<pre><code data-trim>
+						"defaultFontSizes": false,
+						"fluid": false,
+						"fontSizes": [
+							{
+								"name": "Small",
+								"slug": "small",
+								"size": "1rem"
+							},
+							{
+								"name": "Medium",
+								"slug": "medium",
+								"size": "1.13rem"
+							},
+							{
+								"name": "Large",
+								"slug": "large",
+								"size": "1.5rem"
+							},
+							{
+								"name": "Extra Large",
+								"slug": "x-large",
+								"size": "2rem"
+							}
+						]
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Colors</h2>
+					<p>From Colors you can set default global colors for the site and see the color palettes of the site.</p>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/settings/color/" target="_blank">Site Editor - Color</a></p>
+				</section>
+
+				<section>
+					<h2>Theme Color Palette</h2>
+					<p>Copy this code into theme.json "settings" to add our theme's color palette.</p>
+					<pre><code data-trim>
+						"color": {
+							"palette": [
+								{
+									"color": "#ffffff",
+									"name": "Base",
+									"slug": "base"
+								},
+								{
+									"color": "#404040",
+									"name": "Contrast",
+									"slug": "contrast"
+								},
+								{
+									"color": "#003c71",
+									"name": "Primary",
+									"slug": "primary"
+								},
+								{
+									"color": "#fff200",
+									"name": "Accent",
+									"slug": "accent"
+								},
+								{
+									"color": "#9e9828",
+									"name": "Hover",
+									"slug": "hover"
+								}
+							]
+						}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Recommendations</h2>
+					<p>The WordPress documentation suggests the following:</p>
+					<ul>
+						<li>Use <strong>base</strong> for the site's background color.</li>
+						<li>Use <strong>contrast</strong> for the site's text color.</li>
+						<li>Use <strong>primary</strong> for the site's link color.</li>
+						<li>Define remaining colors yourself.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Global Element Colors</h2>
+					<p>Set the following colors using our theme's palette:</p>
+					<img src="images/editor-colors.png" alt="Site Editor colors set" width="150" height="277">
+				</section>			
+
+				<section>
+					<h2>Background</h2>
+					<p>From Background you can define a background image for the entire site.</p>
+					<img src="images/editor-background.png" alt="Site Editor background image" width="300" height="385">
+				</section>
+
+				<section>
+					<h2>Shadows</h2>
+					<p>From Shadows you can adjust CSS box-shadow presets or create your own.</p>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/settings/shadow/" target="_blank">Site Editor - Shadows</a></p>
+				</section>
+
+				<section>
+					<h2>Layout</h2>
+					<p>From Layout you can define the width of the content area and set padding on it.</p>
+					<p>This is also were you set the default spacing between blocks.</p>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/settings/layout/" target="_blank">Site Editor - Layout</a></p>
+				</section>
+
+				<section>
+					<h2>Layout Values</h2>
+					<p>Set the following values:</p>
+					<table>
+						<tr>
+							<th>Content Width</th>
+							<td>50rem</td>
+						</tr>
+						<tr>
+							<th>Wide Width</th>
+							<td>62.5rem</td>
+						</tr>
+						<tr>
+							<th>Top & Bottom Padding</th>
+							<td>0</td>
+						</tr>
+						<tr>
+							<th>Left & Right Padding</th>
+							<td>1rem</td>
+						</tr>
+						<tr>
+							<th>Block Spacing</th>
+							<td>24px</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h2>theme.json - Settings</h2>
+					<p>Not all Settings appear in the Site Editor. Some are only controlled through theme.json.</p>
+					<p>Let's look at some of those:</p>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/settings/" target="_blank">Settings - Theme Handbook</a></p>
+					<p><a href="https://developer.wordpress.org/block-editor/reference-guides/theme-json-reference/theme-json-living/#settings" target="_blank">Settings - theme.json Version 3 Reference</a></p>
+				</section>
+
+				<section>
+					<h2>Blocks</h2>
+					<p>If we go back to the Site Editor there is one last section in Styles... Blocks.</p>
+					<p>This is where you can set the default styles for blocks.</p>
+				</section>
+
+				<section>
+					<h2>theme.json - Styles</h2>
+					<p>Our theme.json file now has examples of styling at all three levels it can target:</p>
+					<ul>
+						<li>Root (global)</li>
+						<li>Elements</li>
+						<li>Blocks</li>
+					</ul>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/styles/" target="_blank">Styles - Theme Handbook</a></p>
+					<p><a href="https://developer.wordpress.org/block-editor/reference-guides/theme-json-reference/theme-json-living/#styles" target="_blank">Styles - theme.json Version 3 Reference</a></p>
+				</section>
+
+				<section>
+					<h2>Settings & Styles Hierarchy</h2>
+					<p>This is the hierarchy of overrides for conflicting settings:</p>
+					<ol>
+						<li>Site Editor changes saved in the database.</li>
+						<li>Active theme's theme.json file.</li>
+						<li>WordPress core defaults.</li>
+					</ol>
+				</section>
+				
+				<section>
+					<h2 class="uppercase">Objectives:<br> Day 3, Section 1</h2>
+					<ul>
+						<li>Explain the differences between the types of WordPress themes.</li>
+						<li>Explain the basic folders and files in a WordPress block theme.</li>
+						<li>Use theme.json and the Site Editor to modify global theme settings and styles.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 class="uppercase">Objectives:<br> Day 3, Section 2</h2>
+					<ul>
+						<li>Use the Template Hierarchy to identify theme templates.</li>
+						<li>Create, modify, and use Templates for the Blog.</li>
+						<li>Create, modify, and use Template Parts.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Templates</h2>
+				</section>
+
+				<section>
+					<h2>CMS Templates</h2>
+					<blockquote>"In a nutshell, templates take dynamic data and wrap it into structured HTML markup, which is then sent to the browser."</blockquote>
+					<p><a href="https://developer.wordpress.org/themes/templates/introduction-to-templates/" target="_blank">Introduction to Templates - Theme Handbook</a></p>
+				</section>
+
+				<section>
+					<h2>Fake Template Example</h2>
+					<pre><code data-trim>
+						&lt;article&gt;
+							&lt;header&gt;
+								&lt;h2&gt;&lt;!-- Output title --&gt;&lt;/h2&gt;
+								&lt;span&gt;&lt;!-- Output author name --&gt;&lt;/span&gt;
+							&lt;/header&gt;
+							&lt;section&gt;
+								&lt;!-- Output dynamic content here --&gt;
+							&lt;/section&gt;
+						&lt;/article&gt;
+					</code></pre>
+				</section>
+
+                <section>
+					<h2>DRY Principle</h2>
+					<p>The "Don't Repeat Yourself" principle is much easier to follow with a templating system.</p>
+					<p>For example, you could have a website with thousands of blog posts that uses one template file to load all of those webpages.</p>
+				</section>
+
+                <section>
+					<h2>WordPress Templates</h2>
+                    <p>WordPress themes are a collection of template files that work together to produce a website.</p>
+					<p>WordPress has a very specific templating system that allows for easy control over the visual presentation of different content types.</p>
+				</section>
+
+				<section>
+					<h2>Templates vs Template Parts</h2>
+					<p>WordPress Block Themes have a <strong>templates</strong> folder and a <strong>parts</strong> folder.</p>
+					<ul>
+						<li><strong>Templates</strong>: Top level templates that include everything inside the body element.</li>
+						<li><strong>Template Parts</strong>: Partial templates to be used inside of the top level templates.</li>
+					</ul>
+				</section>
+
+                <section>
+					<h2>WordPress Template Markup</h2>
+                    <p>Templates in block themes are written in HTML with "block markup". Block markup is HTML comments with data that WordPress parses into dynamic content.</p>
+					<pre><code data-trim>
+						&lt;!-- wp:template-part {"slug":"header","tagName":"header"} /--&gt;
+
+							&lt;!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} --&gt;
+							&lt;main class="wp-block-group"&gt;
+
+								&lt;!-- wp:template-part {"slug":"loop","align":"full"} /--&gt;
+
+							&lt;/main&gt;
+							&lt;!-- /wp:group --&gt;
+
+						&lt;!-- wp:template-part {"slug":"footer","tagName":"footer"} /--&gt;
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Common Template Files</h2>
+					<ul>
+						<li>index.html (required)</li>
+						<li>page.html</li>
+						<li>archive.html</li>
+						<li>single.html</li>
+						<li>front-page.html</li>
+						<li>404.html</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>How does WordPress know which template to use?</h2>
+				</section>
+
+				<section>
+					<h2>WordPress Template Selection</h2>
+					<p>WordPress uses the URL to determine which template to use to display a webpage.</p>
+					<ol>
+						<li>A visitor goes to example.com/hello-world/</li>
+						<li>WordPress searches the database for "hello-world"</li>
+						<li>It finds out "hello-world" is a Post</li>
+						<li>It looks for a template to render a single Post</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Template Hierarchy</h2>
+					<p>When WordPress gets to step four, it now looks at the theme to find an appropriate template.</p>
+					<p>Thankfully, we have a chart to help us understand the process...</p>
+					<a href="https://developer.wordpress.org/themes/templates/template-hierarchy/" target="_blank">Template Hierarchy - Theme Handbook</a>
+				</section>
+
+				<section>
+					<h2>Template Hierarchy Chart</h2>
+					<a href="https://i0.wp.com/developer.wordpress.org/files/2023/10/template-hierarchy-scaled.jpeg?ssl=1" target="_blank"><img src="images/template-hierarchy.jpeg" alt="WordPress Template Hierarchy for Block Themes"></a>
+				</section>
+				
+				<section>
+					<h2 class="uppercase">Activity</h2>
+					<p>In a group, work together and use the Template Hierarchy Chart to answer the following:</p>
+					<ul class="smaller-font">
+						<li>What file(s) can be used to display a list of all Blog posts?</li>
+						<li>What file(s) can be used to display a single Blog post?</li>
+						<li>What file can be used to change the layout of the webpages that display all the posts in any Category?</li>
+						<li>What file(s) would I create if to make a template for a specific Page that has an ID of 13 and a slug of "about-us"?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>WordPress IDs</h2>
+				</section>
+
+				<section>
+					<h2>WordPress IDs</h2>
+					<p>Everything created or uploaded to WordPress is assigned a unique ID.</p>
+					<p>Examples: a Page, a Blog post, an image.</p>
+					<p>This ID is stored in the WordPress database and will never change or be reused, even if that item is deleted.</p>
+				</section>
+
+				<section>
+					<h2>Finding the IDs</h2>
+					<p>The IDs can be seen in the URL when editing a post or page...</p>
+					<img src="images/id-in-url.png" alt="WordPress ID in URL">
+					<p>...or a media file...</p>
+					<img src="images/id-in-url-media.png" alt="WordPress ID in URL for Media file">
+				</section>
+
+				<section>
+					<h2>Reveal IDs Plugin</h2>
+					<p>Installing the <a href="https://wordpress.org/plugins/reveal-ids-for-wp-admin-25/" target="_blank">Reveal IDs plugin</a> adds an IDs column to the tables in the admin area.</p>
+					<img src="images/reveal-ids-column.png" alt="Reveal IDs Column" width="200" height="374">
+				</section>
+
+				<section>
+					<h2>Creating Templates</h2>
+				</section>
+
+				<section>
+					<h2>Edit index.html</h2>
+					<p>Let's make some changes to our index.html template...</p>
+				</section>
+
+				<section>
+					<h2>Query Loop Block</h2>
+					<p>The Query Loop is how we output multiple posts at once in the Block Editor.</p>
+					<p>Keeping the "Default" setting means it will return the ten most recent Posts in reverse chronological order.</p>
+					<p><a href="https://wordpress.org/documentation/article/query-loop-block/" target="_blank">Query Loop Block</a></p>
+				</section>
+
+				<section>
+					<h2>Pagination Block</h2>
+					<p>The Pagination Block is used to provide users with the ability to navigate through multiple pages of posts.</p>
+					<p><a href="https://wordpress.org/documentation/article/pagination-block/" target="_blank">Pagination Block</a></p>
+				</section>
+
+				<section>
+					<h2>User-saved Templates <br>vs Theme Templates</h2>
+					<p>When WordPress goes through the template hierarchy it looks for templates in the themes folder <strong>AND</strong> the database.</p>
+				</section>
+
+				<section>
+					<h2>User-saved Templates</h2>
+					<p>If someone edits a template in the Site Editor it gets stored in the database.</p>
+					<p>WordPress will now use that user-saved template instead of the theme template.</p>
+				</section>
+
+				<section>
+					<h2>Creating Template Parts</h2>
+				</section>
+
+				<section>
+					<h2>Template Parts</h2>
+					<p>Remember, template parts are <strong>not</strong> in the template hierarchy.</p>
+					<p>Template parts are small files called into top-level templates.</p>
+					<p>Examples: <strong>header.html</strong> and <strong>footer.html</strong>.</p>
+				</section>
+
+				<section>
+					<h2>Edit header.html</h2>
+					<p>Let's make some changes to our header.html template...</p>
+				</section>
+
+				<section>
+					<h2>Header Structure</h2>
+					<p>This is what it should look like now...</p>
+					<img src="images/header-structure.png" alt="Site Editor Header Structure" width="300" height="326">
+				</section>
+
+				<section>
+					<h2>Create a Sidebar</h2>
+					<p>In the Site Editor, go to Patterns and click "Add New Pattern" then "Add New Template Part".</p>
+					<p>Name the template part "Sidebar" and assign it to the General area.</p>
+				</section>
+
+				<section>
+					<h2>Sidebar Wrapper Element</h2>
+					<p>After creating the Template Part sidebar.html and adding it to index.html, let's change the HTML tag that wraps the sidebar...</p>
+					<pre><code data-trim>
+						&lt;!-- wp:template-part {"slug":"sidebar","tagName":"aside","className":"site-sidebar"} /--&gt;
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Register Template Parts</h2>
+					<p>Add the following to theme.json:</p>
+					<pre><code data-trim>
+						"templateParts": [
+							{
+								"area": "header",
+								"name": "header",
+								"title": "Header"
+							},
+							{
+								"area": "footer",
+								"name": "footer",
+								"title": "Footer"
+							},
+							{
+								"area": "uncategorized",
+								"name": "sidebar",
+								"title": "Sidebar"
+							}
+						],
+					</code></pre>
+					<p><a href="https://developer.wordpress.org/themes/global-settings-and-styles/template-parts/#registering-template-parts" target="_blank">Registering Template Parts - Theme Handbook</a></p>
+				</section>
+
+				<section>
+					<h2>Creating (more) Templates</h2>
+				</section>
+
+				<section>
+					<h2>Single Blog Posts</h2>
+					<p>We need to create a template for our individual blog post webpages.</p>
+					<p>If you click on a Blog post, it only shows the Excerpt.</p>
+				</section>
+
+				<section>
+					<h2>Blog Archives</h2>
+					<p>In addition to the individual blog posts and the blog index, there are a number of other archives that the Blog creates.</p>
+					<p>Let's look at the <a href="https://i0.wp.com/developer.wordpress.org/files/2023/10/template-hierarchy-scaled.jpeg?ssl=1" target="_blank">Template Hierarchy chart...</a></p>
+				</section>
+
+				<section>
+					<h2 class="uppercase">Objectives:<br> Day 3, Section 2</h2>
+					<ul>
+						<li>Use the Template Hierarchy to identify theme templates.</li>
+						<li>Create, modify, and use Templates for the Blog.</li>
+						<li>Create, modify, and use Template Parts.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Code from Class</h2>
+					<p>I will push my theme files from today's class to GitHub and share the link on Slack.</p>
+					<p>You can reference that code if you need to catch up on anything from class today.</p>
+				</section>
+
+				<section>
+					<h2 class="uppercase">Afternoon Task 1</h2>
+					<ul>
+						<li>Create a "Footer Navigation" menu with links to these Pages: Home, Contact, and Privacy Policy.</li>
+						<li>In the Footer Template Part, use the Navigation block to add this menu.</li>
+						<li>In the Footer Template part, use the Social Icons block to add links to three social media platforms.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 class="uppercase">Hints</h2>
+					<ul>
+						<li>Site Editor -> Navigation allows you to duplicate and rename Navigation menus.
+							<br><img src="images/navigation-duplicate-rename.png" alt="Site Editor Navigation menu to duplicate and rename a menu" width="300" height="185">
+						</li>
+						<li>The Navigation block will let you switch menus once added to the footer.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 class="uppercase">Afternoon Task 2</h2>
+					<ul>
+						<li>Create a new template for the Front Page.</li>
+						<li>In this template, delete everything inside of the Main block and replace it with these blocks:
+							<ul>
+								<li>Cover Block that uses the Featured Image.</li>
+								<li>Nested in the Cover block, Title block set as an H1.</li>
+								<li>After the Cover block, the Content Block.</li>
+							</ul>
+						</li>
+						<li>Add a Featured Image and paragraph of text to the Home Page to verify it works.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 class="uppercase">Afternoon Task 3</h2>
+					<ul>
+						<li>In the Site Editor -> Styles -> Blocks... 
+							<ul>
+								<li>Style the Button block's "Outline" Style Variation to have a yellow border, white text, and a black background.</li>
+								<li>Style the Pullquote to our Large font preset and top/bottom padding of Medium.</li>
+							</ul>
+						</li>
+						<li>Save changes to theme then open theme.json to set the <strong>cite</strong> element inside of the Pullquote block to our Medium font preset. Use <a href="https://developer.wordpress.org/themes/global-settings-and-styles/styles/applying-styles/#styling-elements-nested-in-blocks" target="_blank">this documentation link</a> to see a similar example.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Reminder</h2>
+					<ol>
+						<li>Use "Save Changes to Theme".</li>
+						<li>Commit your changes in your Git repo.</li>
+						<li>Push your code to GitHub.</li>
+					</ol>
+				</section>
+                
+    			<section>
+                    <h2 class="uppercase">Afternoon Quiz</h2>
+					<p>Complete today's quiz on the Learning Hub by 10pm.</p>
+					<p>You can retake it as many times as you want, your highest grade will be used.</p>
+					<p>It should help you identify what you need to review and help me know what to review with the class.</p>
+					<p>Click these after completing the quiz: <img src="images/quiz-view-feedback.png" alt="View Feedback button"></p>
+                </section>
+
+                <section>
+                	<h2>Resources</h2>
+                	<ul>
+                		<li><a href="https://developer.wordpress.org/" target="_blank" rel="noopener">WordPress Developer Resources</a></li>
+                		<li><a href="https://developer.wordpress.org/themes/" target="_blank"  rel="noopener">Theme Handbook</a></li>
+						<li><a href="https://learn.wordpress.org/course/beginner-wordpress-developer/" target="_blank" rel="noopener">Learn WordPress (Course) -- Beginner WordPress Developer</a></li>
+						<li><a href="https://learn.wordpress.org/course/intermediate-theme-developer/" target="_blank" rel="noopener">Learn WordPress (Course) -- Intermediate Theme Developer</a></li>
+                	</ul>
+                </section>
+
+				<section>
+					<h2>Questions</h2>
+				</section>
+				
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script src="plugin/search/search.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+				controlsBackArrows: 'visible',
+				controlsTutorial: false,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealSearch, RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>
