@@ -50,3 +50,7 @@ article.wp-block-group::after{
     display: table;
     clear: both;
 }
+
+.sidebar-layout > *:first-child {
+	flex: 1 1 30rem;
+}
