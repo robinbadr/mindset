@@ -1,0 +1,78 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-acf-acf-blocks {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.accordion {
+    margin: 2em auto;
+}
+.accordion-item h3 {
+    margin: 0;
+}
+.accordion-item h3 .accordion-button {
+    display: flex;
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    cursor: pointer;
+}
+.accordion-item h3 .accordion-button:focus {
+    outline: thin dashed #fff;
+}
+.accordion-item h3 .accordion-button .accordion-title {
+    width: 100%;    
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+.accordion-item h3 .accordion-button .accordion-icon {
+    display: block;
+    transition: all ease 0.3s;
+    align-self: center;
+}
+.accordion-item h3 .accordion-button .accordion-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: middle;
+}
+.accordion-item h3 .accordion-button .accordion-icon svg path {
+    fill: currentColor;
+}
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}
+.accordion-item.active .accordion-text{
+    display: block;
+}
+.accordion-item .accordion-text {
+    display: none;
+    padding: 1.5em 2em .25em;
+}
+@media (min-width: 37.5em) {
+    .accordion-item h3 .accordion-button .accordion-title {
+        font-size: 2rem;
+    }
+    .accordion-item h3 .accordion-button .accordion-icon svg {
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+    .accordion-item .accordion-text {
+        padding: 3em 3em 1.5em;
+    }
+}

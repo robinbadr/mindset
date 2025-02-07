@@ -20,7 +20,7 @@ function mindset_enqueues() {
 
     wp_enqueue_script(
         'mindset-scroll-to-top',
-        get_theme_file_uri('assets/js/scrooll-to-top.js'),
+        get_theme_file_uri('assets/js/scroll-to-top.js'),
         array(),
         '20250127',
         array('strategy' => 'defer')

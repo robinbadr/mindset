@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "acf/accordion",
+    "version": "1.0.1",
+    "title": "Accordion",
+    "category": "widgets",
+    "icon": "editor-justify",
+    "description": "An accordion that opens and closes on click.",
+    "example": {},
+    "keywords": ["accordion", "faq"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "anchor": true,
+        "align": false
+    },
+    "textdomain": "accordion",
+    "editorScript": "file:./index.js",
+    "style": "file:./style.css",
+    "viewScript": "file:./view.js"
+}
