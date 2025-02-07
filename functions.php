@@ -51,3 +51,8 @@ add_image_size( '200x250', 200, 250, true );
 add_action( 'after_setup_theme', 'mindset_setup' );
 
 require get_theme_file_path() . '/mindset-blocks/mindset-blocks.php';
+
+/**
+* Custom Post Types & Custom Taxonomies
+*/
+require get_template_directory() . '/inc/post-types-taxonomies.php';
