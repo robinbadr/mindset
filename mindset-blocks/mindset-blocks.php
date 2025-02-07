@@ -11,6 +11,7 @@
 function mindset_blocks_mindset_blocks_block_init() {
 	register_block_type( __DIR__ . '/build/copyright' );
 	register_block_type( __DIR__ . '/build/company-address' );
+	register_block_type( __DIR__ . '/build/company-email' );
 	register_block_type( __DIR__ . '/build/service-posts', array( 'render_callback' => 'fwd_render_service_posts' ) );
 	
 }
