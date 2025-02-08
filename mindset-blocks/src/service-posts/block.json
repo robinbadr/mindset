@@ -12,8 +12,7 @@
 		"html": false
 	},
 	
-	"textdomain": "service-posts",
+	"textdomain": "mindset-blocks",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css"
 }

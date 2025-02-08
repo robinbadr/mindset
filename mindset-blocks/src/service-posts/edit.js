@@ -13,6 +13,8 @@ import { __ } from '@wordpress/i18n';
  */
 import { useBlockProps } from '@wordpress/block-editor';
 
+import ServerSideRender from '@wordpress/server-side-render';
+
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -32,7 +34,7 @@ import ServerSideRender from '@wordpress/server-side-render';
 export default function Edit() {
 	return (
 		<div { ...useBlockProps() }>
-			{ __( 'Services – hello from the editor!', 'service-posts' ) }
+			<ServerSideRender block="mindset-blocks/service-posts" />
 		</div>
 	);
 }

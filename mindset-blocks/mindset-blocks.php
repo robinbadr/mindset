@@ -12,7 +12,10 @@ function mindset_blocks_mindset_blocks_block_init() {
 	register_block_type( __DIR__ . '/build/copyright' );
 	register_block_type( __DIR__ . '/build/company-address' );
 	register_block_type( __DIR__ . '/build/company-email' );
-	register_block_type( __DIR__ . '/build/service-posts', array( 'render_callback' => 'fwd_render_service_posts' ) );
+	register_block_type(
+		__DIR__ . '/build/service-posts',
+		array( 'render_callback' => 'fwd_render_service_posts' ) 
+	);
 	
 }
 add_action( 'init', 'mindset_blocks_mindset_blocks_block_init' );
@@ -38,3 +41,62 @@ function mindset_register_custom_fields() {
 	);
 }
 add_action( 'init', 'mindset_register_custom_fields' );
+
+function fwd_render_service_posts( $attributes ) {
+    ob_start();
+    ?>
+    <div <?php echo get_block_wrapper_attributes(); ?>>
+        <?php
+        $args = array(
+            'post_type'      => 'fwd-service',
+            'posts_per_page' => -1,
+            'order'          => 'ASC',
+            'orderby'        => 'title'
+        );
+ 
+        $query = new WP_Query( $args );
+ 
+        if ( $query -> have_posts() ) {
+            echo '<nav class="services-nav">';
+            
+            while ( $query -> have_posts() ) {
+                $query -> the_post();
+                
+                echo '<a href="#'. esc_attr( get_the_ID() ) .'">'. esc_html( get_the_title() ) .'</a>';
+ 
+            }
+            wp_reset_postdata();
+ 
+            echo '</nav>';
+        }
+ 
+        $args = array(
+            'post_type'      => 'fwd-service',
+            'posts_per_page' => -1,
+            'order'          => 'ASC',
+            'orderby'        => 'title',
+        );
+                
+        $query = new WP_Query( $args );
+                
+        if ( $query -> have_posts() ) {
+            echo '<section>';
+    
+            while ( $query -> have_posts() ) {
+                $query -> the_post();
+ 
+                echo '<article id="'. esc_attr( get_the_ID() ) .'">';	
+                    echo '<h2>' . esc_html( get_the_title() ) . '</h2>';
+                    the_content();
+                echo '</article>';
+                
+            }
+            wp_reset_postdata();
+ 
+            echo '</section>';
+        }
+        ?>
+    </div>
+    <?php
+    return ob_get_clean();
+}
