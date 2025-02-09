@@ -161,13 +161,13 @@
 					}
 				},
 				"color": {
-					"background": "var(--wp--preset--color--contrast)",
-					"text": "var(--wp--preset--color--base)"
+					"background": "var(--wp--preset--color--accent)",
+					"text": "var(--wp--preset--color--contrast)"
 				},
 				"elements": {
 					"link": {
 						"color": {
-							"text": "var(--wp--preset--color--base)"
+							"text": "var(--wp--preset--color--contrast)"
 						}
 					}
 				},
